@@ -9,8 +9,10 @@ import { Check, Copy, RefreshCw } from "lucide-react";
 import { useOrigin } from "@/hooks/use-origin";
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 function InviteModal() {
+  const router = useRouter();
   const { onOpen, isOpen, onClose, type, data } = useModal();
   const origin = useOrigin();
 
@@ -38,6 +40,7 @@ function InviteModal() {
         `/api/servers/${server?.id}/invite-code`,
       );
       onOpen("invite", { server: response.data });
+      router.refresh();
     } catch (error) {
       console.log(error);
     } finally {

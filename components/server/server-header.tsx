@@ -49,13 +49,19 @@ function ServerHeader({ server, role }: ServerHeaderProps) {
           </DropdownMenuItem>
         )}
         {isAdmin && (
-          <DropdownMenuItem className="cursor-pointer px-3 py-2 text-sm">
+          <DropdownMenuItem
+            onClick={() => onOpen("editServer", { server })}
+            className="cursor-pointer px-3 py-2 text-sm"
+          >
             Server Settings
             <Settings className="ml-auto h-4 w-4" />
           </DropdownMenuItem>
         )}
         {isAdmin && (
-          <DropdownMenuItem className="cursor-pointer px-3 py-2 text-sm">
+          <DropdownMenuItem
+            className="cursor-pointer px-3 py-2 text-sm"
+            onClick={() => onOpen("members", { server })}
+          >
             Manage Members
             <Users className="ml-auto h-4 w-4" />
           </DropdownMenuItem>
